@@ -6,10 +6,13 @@ import { RouterProvider } from 'react-router-dom'
 import router from './Router/Router.jsx'
 import Root from './layout/Root.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router}>
-      <Root></Root>
-    </RouterProvider>
-  </StrictMode>,
-)
+createRoot(document.getElementById("root")).render(
+  <div className='container mx-auto'>
+    <StrictMode>
+      <RouterProvider router={router}>
+        <Root></Root>
+      </RouterProvider>
+    </StrictMode>
+    ,
+  </div>
+);
