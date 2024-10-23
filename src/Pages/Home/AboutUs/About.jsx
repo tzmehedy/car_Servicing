@@ -9,7 +9,7 @@ const About = () => {
         <div className="flex flex-col md:flex-row  gap-5">
           <div className="w-1/2 relative">
             <img className="w-2/3" src={aboutUsImg} alt="" />
-            <img className="w-1/3 absolute right-36 top-48 border-4 border-white" src={aboutUsParts} alt="" />
+            <img className="w-1/3 absolute right-36 top-44 border-4 border-white" src={aboutUsParts} alt="" />
           </div>
           <div className="w-1/2 space-y-3">
             <p className="text-[#FF3811] font-bold">About Us</p>
