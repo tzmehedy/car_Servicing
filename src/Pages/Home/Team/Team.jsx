@@ -21,7 +21,7 @@ const Team = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between">
-        <div className="card bg-base-100 w-96 shadow-2xl">
+        <div className="card bg-base-100 max-w-96 shadow-2xl">
           <figure className="px-10 pt-10">
             <img className="rounded-lg" src={teamImg1} />
           </figure>
@@ -38,7 +38,7 @@ const Team = () => {
         </div>
 
 
-        <div className="card bg-base-100 w-96 shadow-2xl">
+        <div className="card bg-base-100 max-w-96 shadow-2xl">
           <figure className="px-10 pt-10">
             <img className="rounded-lg" src={teamImg2} />
           </figure>
@@ -53,7 +53,7 @@ const Team = () => {
             </div>
           </div>
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 max-w-96 shadow-xl">
           <figure className="px-10 pt-10">
             <img className="rounded-lg" src={teamImg3} />
           </figure>
