@@ -7,7 +7,7 @@ import router from './Router/Router.jsx'
 import Root from './layout/Root.jsx'
 
 createRoot(document.getElementById("root")).render(
-  <div className='container mx-auto'>
+  <div>
     <StrictMode>
       <RouterProvider router={router}>
         <Root></Root>

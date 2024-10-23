@@ -4,10 +4,14 @@ import NavBar from '../Pages/Shared/NavBar';
 
 const Root = () => {
     return (
-        <div>
-            <NavBar></NavBar>
-            <Outlet></Outlet>
+      <div>
+        <div className='h-20'>
+          <NavBar></NavBar>
         </div>
+        <div className="container mx-auto min-h-[calc(100vh-200px)]">
+          <Outlet></Outlet>
+        </div>
+      </div>
     );
 };
 
