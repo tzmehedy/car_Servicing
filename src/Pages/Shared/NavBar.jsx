@@ -22,6 +22,7 @@ const NavBar = () => {
           <NavLink to={"contact"}>Contact</NavLink>
         </li>
         
+        
       </>
     );
 
@@ -59,9 +60,11 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
-        <div className="navbar-end">
-          <button className="btn btn-outline btn-error">Appointment</button>
-          
+        <div className="navbar-end space-x-2">
+          <button className="btn btn-outline border border-[#FF3811] text-[#FF3811]">
+            Appointment
+          </button>
+          <Link to={"/login"} className="btn bg-[#FF3811] text-white font-bold">Login</Link>
         </div>
       </div>
     );
