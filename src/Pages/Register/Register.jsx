@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import registerImg from "../../assets/images/login/login.svg"
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
+
 
 const Register = () => {
+
+    const {signUpWithEmailPassword} = useContext(AuthContext)
+
+    const handelRegister = (e) =>{
+        e.preventDefault()
+
+        const form = e.target
+
+        const name = form.name.value
+        const email = form.email.value
+        const password = form.password.value
+
+        console.log(name,email,password)
+
+        signUpWithEmailPassword(email,password)
+        .then(user=>{
+            toast("Registration Successfully")
+        })
+        .catch(error=>{
+            toast(error)
+        })
+
+        form.reset()
+
+
+    }
+
+
+
+    
     return (
       <div>
         <div className="mt-10">
@@ -13,7 +47,7 @@ const Register = () => {
               </div>
               <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl p-3">
                 <h1 className="text-5xl font-bold">Please Register</h1>
-                <form className="card-body">
+                <form onSubmit={handelRegister} className="card-body">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Name</span>
@@ -21,8 +55,9 @@ const Register = () => {
                     <input
                       type="text"
                       placeholder="Name"
+                      name='name'
                       className="input input-bordered"
-                      required
+                      
                     />
                   </div>
                   <div className="form-control">
@@ -32,8 +67,9 @@ const Register = () => {
                     <input
                       type="email"
                       placeholder="email"
+                      name='email'
                       className="input input-bordered"
-                      required
+                      
                     />
                   </div>
                   <div className="form-control">
@@ -44,7 +80,7 @@ const Register = () => {
                       type="password"
                       placeholder="password"
                       className="input input-bordered"
-                      required
+                      name='password'
                     />
                   </div>
                   <div className="form-control mt-6">
@@ -62,7 +98,6 @@ const Register = () => {
                         Login
                       </Link>
                     </p>
-                  
                 </div>
               </div>
             </div>
