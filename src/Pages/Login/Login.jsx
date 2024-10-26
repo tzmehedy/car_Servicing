@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { loginWithEmailPassword, signInWithGoogle } = useContext(AuthContext);
+  const { user, loginWithEmailPassword, signInWithGoogle } = useContext(AuthContext);
 
   const handelLogin = (e) =>{
     e.preventDefault()
@@ -37,10 +37,9 @@ const Login = () => {
     .then(error=>{
       toast(error.message)
     })
-
   }
 
-
+  console.log(user)
 
 
     return (

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import logo from "../../../public/logo.svg"
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
     const navLinks = (
       <>
         <li>
@@ -24,7 +28,18 @@ const NavBar = () => {
         
         
       </>
-    );
+    )
+
+    const handelLogOut = () =>{
+      logOut()
+      .then(()=>{
+        toast("SuccessFully Logout")
+      })
+      .catch(error=>{
+        toast(error.message)
+      })
+
+    }
 
     return (
       <div className="navbar bg-base-100 shadow-lg fixed z-10">
@@ -64,7 +79,22 @@ const NavBar = () => {
           <button className="btn btn-outline border border-[#FF3811] text-[#FF3811]">
             Appointment
           </button>
-          <Link to={"/login"} className="btn bg-[#FF3811] text-white font-bold">Login</Link>
+
+          {user ? (
+            <button
+              onClick={handelLogOut}
+              className="btn bg-[#FF3811] text-white font-bold"
+            >
+              LogOut
+            </button>
+          ) : (
+            <Link
+              to={"/login"}
+              className="btn bg-[#FF3811] text-white font-bold"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     );
