@@ -69,7 +69,7 @@ const Login = () => {
                 <div className=''>
                   <p className='my-5'>
                     You don't have register. Please{" "}
-                    <Link className="text-[#FF3811] underline"> Register</Link>
+                    <Link to={"/register"} className="text-[#FF3811] underline"> Register</Link>
                   </p>
                 </div>
               </div>
