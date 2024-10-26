@@ -6,24 +6,25 @@ import Register from "../Pages/Register/Register";
 
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Root></Root>,
+    children: [
+      {
         path: "/",
-        element: <Root></Root>,
-        children:[
-          {
-            path:"/",
-            element: <Home></Home>
-          },
-          {
-            path:"/login",
-            element: <Login></Login>
-          },
-          {
-            path:"/register",
-            element: <Register></Register>          
-          }  
-      ]
-    }
-])
+        element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/services")
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
+  },
+]);
 
 export default router;
