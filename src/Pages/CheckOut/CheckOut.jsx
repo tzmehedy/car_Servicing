@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import bannerImg from "../../assets/images/banner/4.jpg"
+import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const CheckOut = () => {
+    const {user} = useContext(AuthContext)
+    console.log(user)
+    const service = useLoaderData()
+    console.log(service)
     return (
       <div className="mt-20">
         <div
@@ -40,6 +46,7 @@ const CheckOut = () => {
                     type="text"
                     className="w-full px-10 py-2 border-2 border-stone-400 "
                     name="serviceName"
+                    defaultValue={service.title}
                     id=""
                     placeholder="Service Name"
                   />
@@ -60,6 +67,7 @@ const CheckOut = () => {
                     type="email"
                     className="w-full px-10 py-2 border-2 border-stone-400"
                     name="email"
+                    defaultValue={user.email}
                     id=""
                     placeholder="Email"
                   />
