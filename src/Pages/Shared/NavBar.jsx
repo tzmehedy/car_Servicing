@@ -5,6 +5,7 @@ import logo from "../../../public/logo.svg"
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { FaCartArrowDown } from 'react-icons/fa6';
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -76,9 +77,9 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end space-x-2">
-          <button className="btn btn-outline border border-[#FF3811] text-[#FF3811]">
-            Appointment
-          </button>
+          <Link to={"/myBookings"} className=" mr-3 text-2xl text-[#FF3811]">
+            <FaCartArrowDown />
+          </Link>
 
           {user ? (
             <button
