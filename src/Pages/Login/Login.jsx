@@ -4,13 +4,19 @@ import loginImg from "../../assets/images/login/login.svg"
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoLinkedin } from 'react-icons/io5';
 import { FaFacebookSquare } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { user, loginWithEmailPassword, signInWithGoogle } = useContext(AuthContext);
+
+  const location = useLocation()
+
+  const navigate = useNavigate()
+
+  console.log(location)
 
   const handelLogin = (e) =>{
     e.preventDefault()
@@ -23,6 +29,10 @@ const Login = () => {
     loginWithEmailPassword(email,password)
     .then(user=>{
       toast("Login SuccessFully")
+      {
+        location.state ? navigate(location.state) : navigate("/")
+      }
+      
     })
     .catch(error=>{
       toast(error.message)
@@ -33,6 +43,9 @@ const Login = () => {
     signInWithGoogle()
     .then(user=>{
       toast("login SuccessFully")
+      {
+        location.state ? navigate(location.state) : navigate("/");
+      }
     })
     .then(error=>{
       toast(error.message)

@@ -8,6 +8,35 @@ const CheckOut = () => {
     console.log(user)
     const service = useLoaderData()
     console.log(service)
+
+    const handelBookings = (e) =>{
+      e.preventDefault()
+
+      const form = e.target 
+      const name = form.name.value 
+      const serviceName = service.title
+      const contactNo = form.contact.value 
+      const email = form.email.value
+      const message = form.message.value 
+
+      const bookingInfo = {name, serviceName, contactNo, email, message}
+
+      fetch("http://localhost:5000/bookings",{
+        method: "POST",
+        headers: {
+          "content-type" : "application/json"
+        },
+        body: JSON.stringify(bookingInfo)
+
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data)
+      })
+
+    }
+
+
     return (
       <div className="mt-20">
         <div
@@ -30,7 +59,7 @@ const CheckOut = () => {
 
         <div className="mt-10">
           <div className="bg-[#F3F3F3] p-20 flex justify-center">
-            <form className=" space-y-5">
+            <form onSubmit={handelBookings} className=" space-y-5">
               <div className="space-x-20 flex flex-col md:flex-row">
                 <div className="">
                   <input
