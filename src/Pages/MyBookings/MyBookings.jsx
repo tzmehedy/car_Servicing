@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import bannerImg from "../../assets/images/banner/2.jpg"
+import  { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const MyBookings = () => {
+  const {user} = useContext(AuthContext)
+  const [bookingsInfo, setBookingsInfo] = useState()
+
+  fetch(`http://localhost:5000/bookings?email=${user.email}`)
+    .then((res) => res.json())
+    .then((data) => setBookingsInfo(data));
+
     return (
       <div className="mt-10">
         <div
@@ -20,6 +28,8 @@ const MyBookings = () => {
             </div>
           </div>
         </div>
+
+        
       </div>
     );
 };
