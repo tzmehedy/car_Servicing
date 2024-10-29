@@ -1,11 +1,20 @@
 import React from 'react';
 
 const BookingsTable = ({ bookingInfo }) => {
-    console.log(bookingInfo);
+
+
+    const handelDelete =()=>{
+        fetch(`http://localhost:5000/bookings/${bookingInfo._id}`,{
+            method: "DELETE"
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+
+    }
   return (
     <tr>
       <th>
-        <button className="btn btn-circle">
+        <button onClick={handelDelete} className="btn btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

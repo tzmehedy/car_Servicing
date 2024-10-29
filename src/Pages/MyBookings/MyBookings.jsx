@@ -36,7 +36,6 @@ const MyBookings = () => {
             <thead>
               <tr>
                 <th>
-                  
                 </th>
                 <th>Name</th>
                 <th>Service Name</th>
