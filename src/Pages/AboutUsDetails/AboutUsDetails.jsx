@@ -12,11 +12,11 @@ const AboutUsDetails = () => {
     return (
       <div className="mt-10">
         <div
-          className=" w-full h-[350px] relative "
+          className=" w-full h-[400px] relative"
           style={{
             backgroundImage: `url(${bannerImg})`,
             backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
+            
           }}
         >
           <div className="flex justify-center items-center px-10  bg-gradient-to-r from-[#151515] to-rgba(21, 21, 21, 0) h-full">
