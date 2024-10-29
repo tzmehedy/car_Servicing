@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import bannerImg from "../../assets/images/banner/2.jpg"
 import  { AuthContext } from '../../AuthProvider/AuthProvider';
+import BookingsTable from './BookingsTable';
 
 const MyBookings = () => {
   const {user} = useContext(AuthContext)
@@ -29,7 +30,31 @@ const MyBookings = () => {
           </div>
         </div>
 
-        
+        <div className="overflow-x-auto mt-10">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>
+                  
+                </th>
+                <th>Name</th>
+                <th>Service Name</th>
+                <th>Contact No</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {bookingsInfo && bookingsInfo.map((bookingInfo) => (
+                <BookingsTable
+                  key={bookingInfo._id}
+                  bookingInfo={bookingInfo}
+                ></BookingsTable>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
 };
