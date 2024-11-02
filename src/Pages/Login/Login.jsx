@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios';
 
 const Login = () => {
   const { user, loginWithEmailPassword, signInWithGoogle } = useContext(AuthContext);
@@ -16,22 +17,30 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  console.log(location)
+
 
   const handelLogin = (e) =>{
     e.preventDefault()
     const form = e.target
     const email = form.name.value
     const password = form.password.value
-
-    console.log(email,password)
     
     loginWithEmailPassword(email,password)
     .then(user=>{
       toast("Login SuccessFully")
-      {
-        location.state ? navigate(location.state) : navigate("/")
+      const loggedUser = {email}
+      // location.state ? 
+
+      axios.post("http://localhost:5000/jwt", loggedUser,{withCredentials:true})
+      .then(res=>{
+        console.log(res.data);
+        if (res.data.success) {
+          navigate(location?.state ? location.state : "/")
+        }
       }
+        
+      )
+      
       
     })
     .catch(error=>{

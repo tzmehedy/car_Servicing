@@ -1,16 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import bannerImg from "../../assets/images/banner/2.jpg"
 import  { AuthContext } from '../../AuthProvider/AuthProvider';
 import BookingsTable from './BookingsTable';
+import axios from 'axios';
 
 const MyBookings = () => {
   const {user} = useContext(AuthContext)
   const [bookingsInfo, setBookingsInfo] = useState()
 
-  fetch(`http://localhost:5000/bookings?email=${user.email}`)
-    .then((res) => res.json())
-    .then((data) => setBookingsInfo(data));
+
+  useEffect(()=>{
+    axios
+      .get(`http://localhost:5000/bookings?email=${user.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => setBookingsInfo(res.data));
+  },[])
+
+  // fetch(`http://localhost:5000/bookings?email=${user.email}`)
+  //   .then((res) => res.json())
+  //   .then((data) => setBookingsInfo(data));
 
     return (
       <div className="mt-10">
